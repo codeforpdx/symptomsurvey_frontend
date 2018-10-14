@@ -1,4 +1,4 @@
-# Syndrome Surveillance
+# Symptom Survey Front End
 
 This repository is a website for use by Clackamas County.  These are developer notes.
 I have included notes that assume the reader is using a Mac OSX or Linux command line.

@@ -1,5 +1,5 @@
 {
-  "name": "syndromsurveillance",
+  "name": "symptomsurvey_frontend",
   "version": "0.0.0",
   "description": "This is the front end of a site that is intended for use by Clackamas County to monitor symptoms of diseases during outbreaks.",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codeforpdx/syndromsurveillance.git"
+    "url": "git+https://github.com/CodeForPortland/symptomsurvey_frontend.git"
   },
   "author": "Code for PDX",
   "license": "ISC",
