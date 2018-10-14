@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Container from './layout/Container';
+import ReduxWrapper from './redux/ReduxWrapper';
 
 const root = document.getElementById('root');
 
 const render = () => {
   ReactDOM.render(
-    <Container />,
+    <ReduxWrapper />,
     root,
   );
 };
