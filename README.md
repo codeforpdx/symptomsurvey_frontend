@@ -41,7 +41,7 @@ A download of VS Code is available [here](https://code.visualstudio.com/download
 Navigate to a repository where you would like to store the source code.  Then run
 
 ```bash
-git clone https://github.com/codeforpdx/syndromsurveillance.git
+git clone https://github.com/codeforportland/symptomsurvey_frontend.git
 code mva-site
 ```
 
