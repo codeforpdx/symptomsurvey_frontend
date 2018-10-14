@@ -42,7 +42,7 @@ Navigate to a repository where you would like to store the source code.  Then ru
 
 ```bash
 git clone https://github.com/codeforportland/symptomsurvey_frontend.git
-code mva-site
+code symptomsurvey_frontend
 ```
 
 ## Running the site locally
