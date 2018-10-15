@@ -1,31 +1,34 @@
 import React from 'react';
 import {
-  Router, Link,
+  Router,
 } from 'react-router';
 import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
+
+import Header from './Header';
 
 import manifest from './manifest';
 
-const ContainerLayout = ({ children }) => (
-  <div>
-    <div>
-      <Link to="/">{manifest.indexRoute.displayName}</Link>
-      {manifest.childRoutes
-        .filter(config => config.displayName)
-        .map(config => <Link key={config.path} to={config.path}>{config.displayName}</Link>)
-        }
-    </div>
+const ContainerLayout = glamorous.div({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: 20,
+});
+
+const ContainerComponent = ({ children }) => (
+  <ContainerLayout>
+    <Header {...{ manifest }} />
     {children}
-  </div>
+  </ContainerLayout>
 );
 
-ContainerLayout.propTypes = {
+ContainerComponent.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
 const routes = {
   path: '/',
-  component: ContainerLayout,
+  component: ContainerComponent,
   ...manifest,
 };
 
