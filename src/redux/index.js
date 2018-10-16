@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux';
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { routerMiddleware, routerReducer as routing } from 'react-router-redux';
 
 export const rootReducer = combineReducers({ routing });
