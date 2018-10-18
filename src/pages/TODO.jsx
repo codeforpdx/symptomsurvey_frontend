@@ -83,12 +83,14 @@ class TODOS extends Component {
               type="checkbox"
               checked={isComplete}
               onChange={(e) => {
+                // Clicking the checkbox triggers the COMPLETE action in the todo reducer.
                 complete({ key: index, isComplete: e.target.checked });
               }}
             />
             <p>{text}</p>
             <button
               onClick={() => {
+                // Clicking the remove button triggers the REMOVE action in the todo reducer.
                 remove({ key: index });
               }}
               type="button"
@@ -109,6 +111,7 @@ class TODOS extends Component {
             type="button"
             disabled={!inputText}
             onClick={() => {
+              // Triggers an ADD event in the todo reducer.
               add({ text: inputText });
               this.setState({ inputText: '' });
             }}
@@ -137,7 +140,9 @@ TODOS.defaultProps = {
 };
 
 export default connect(
+  // Map the todos array from inside of the todo reducer to the todos prop.
   ({ todo: { todos } }) => ({ todos }),
+  // Bind the action creators from the todo reducer to method props in the TODOS component.
   dispatch => ({
     add: bindActionCreators(addTodo, dispatch),
     complete: bindActionCreators(completeTodo, dispatch),

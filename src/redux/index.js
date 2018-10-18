@@ -9,10 +9,8 @@ import todo from './reducers/todo/reducer';
 
 export const rootReducer = combineReducers({ routing, todo });
 
-const slicer = paths => (state) => {
-  console.log(state);
-  return _.pick(state, paths);
-};
+// The slicer returns a function that specifies which parts of the redux state will be persisted.
+const slicer = paths => state => _.pick(state, paths);
 
 const middlewares = history => [
   routerMiddleware(history),

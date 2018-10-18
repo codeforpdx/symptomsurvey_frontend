@@ -17,7 +17,12 @@ export default ({ todos } = initialState, action) => {
       state.todos[payload.key].isComplete = payload.isComplete;
       return state;
     case REMOVE:
-      state.todos = [...todos.slice(0, payload.key), ...todos.slice(payload.key + 1)];
+      state.todos = [
+        ...todos.slice(0, payload.key),
+        ...todos
+          .slice(payload.key + 1)
+          .map(({ text, isComplete, key }) => ({ text, isComplete, key: key - 1 })),
+      ];
       return state;
     default:
       return state;
