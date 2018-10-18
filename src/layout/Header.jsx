@@ -59,7 +59,7 @@ Header.propTypes = {
 
 export default connect(
   ({ routing: { locationBeforeTransitions = {} } }, ownProps) => {
-    const { pathName = '/' } = locationBeforeTransitions;
-    return { pathName, ...ownProps };
+    const { pathname = '/' } = locationBeforeTransitions;
+    return { pathName: pathname, ...ownProps };
   },
 )(Header);

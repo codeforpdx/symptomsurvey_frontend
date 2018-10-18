@@ -1,7 +1,11 @@
-import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
+import {
+  applyMiddleware, createStore, combineReducers, compose,
+} from 'redux';
 import { routerMiddleware, routerReducer as routing } from 'react-router-redux';
 
-export const rootReducer = combineReducers({ routing });
+import todo from './reducers/todo/reducer';
+
+export const rootReducer = combineReducers({ routing, todo });
 
 const middlewares = history => [
   routerMiddleware(history),
