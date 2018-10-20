@@ -28,7 +28,7 @@ const HeaderWrapper = glamorous.div(
 
 const Header = ({ manifest, pathName }) => (
   <HeaderWrapper className="header">
-    <Link className={pathName === '/' ? 'active' : ''} to="/">{manifest.indexRoute.displayName}</Link>
+    <Link className={pathName === '' ? 'active' : ''} to="/">{manifest.indexRoute.displayName}</Link>
     {manifest.childRoutes
       .filter(config => config.displayName)
       .map(config => <Link className={pathName === config.path ? 'active' : ''} key={config.path} to={config.path}>{config.displayName}</Link>)
@@ -59,7 +59,7 @@ Header.propTypes = {
 
 export default connect(
   ({ routing: { locationBeforeTransitions = {} } }, ownProps) => {
-    const { pathName = '/' } = locationBeforeTransitions;
-    return { pathName, ...ownProps };
+    const { pathname = '/' } = locationBeforeTransitions;
+    return { pathName: pathname.replace(/^\//, ''), ...ownProps };
   },
 )(Header);

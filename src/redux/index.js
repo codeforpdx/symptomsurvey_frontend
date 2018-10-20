@@ -1,7 +1,16 @@
-import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
+import {
+  applyMiddleware, createStore, combineReducers, compose,
+} from 'redux';
 import { routerMiddleware, routerReducer as routing } from 'react-router-redux';
+import _ from 'lodash';
+import persistState from 'redux-localstorage';
 
-export const rootReducer = combineReducers({ routing });
+import todo from './reducers/todo/reducer';
+
+export const rootReducer = combineReducers({ routing, todo });
+
+// The slicer returns a function that specifies which parts of the redux state will be persisted.
+const slicer = paths => state => _.pick(state, paths);
 
 const middlewares = history => [
   routerMiddleware(history),
@@ -14,5 +23,6 @@ export default (history, initialState) => createStore(
   initialState,
   composeEnhancers(
     applyMiddleware(...middlewares(history)),
+    persistState(['todo.todos'], { slicer }),
   ),
 );

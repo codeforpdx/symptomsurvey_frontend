@@ -1,5 +1,6 @@
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import TODOS from '../pages/TODO';
 import FourOhFour from '../pages/FourOhFour';
 
 export default {
@@ -12,6 +13,11 @@ export default {
       component: Login,
       path: 'login',
       displayName: 'Login',
+    },
+    {
+      component: TODOS,
+      path: 'todo',
+      displayName: 'To-do',
     },
     {
       component: FourOhFour,
