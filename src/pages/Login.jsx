@@ -5,6 +5,7 @@ import glamorous from 'glamorous';
 
 const LOGINdiv = glamorous.div({
     '& > .login-field': {
+        margin: 10,
     },
     '& > .submit-button': {
         background: '#337ab7',
@@ -34,7 +35,9 @@ class LoginPage extends Component {
     }
 
     handleSubmit() {
-        alert(`You have submitted username '${this.state.username}'' and password '${this.state.password}'`);
+        const {submit} = this.props;
+        const {username, password} = this.state;
+        submit({username, password});
     }
 
     render() {
@@ -43,7 +46,7 @@ class LoginPage extends Component {
             <LOGINdiv>
                 <div className={'login-field' + 
                 (submitted && !username ? 'has-error' : '')}>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">Username: </label>
                     <input 
                         type="text" 
                         name="username"
@@ -53,7 +56,7 @@ class LoginPage extends Component {
                 </div>
                 <div className={'login-field' + 
                 (submitted && !password ? 'has-error' : '')}>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Password: </label>
                     <input 
                         type="password" 
                         name="password"
@@ -73,5 +76,9 @@ class LoginPage extends Component {
         );
     }
 }
+
+LoginPage.defaultProps = {
+    submit: ({username, password}) => { alert(`You have submitted username '${username}'' and password '${password}'`); },
+  };
 
 export default LoginPage;
