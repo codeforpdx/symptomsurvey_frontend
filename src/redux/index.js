@@ -24,7 +24,7 @@ const mockAxiosMiddleware = ({ dispatch }) => next => (action) => {
             status: 400,
             statusText: 'Bad Request',
             data: {
-              error: 'Invalid username or password',
+              error: 'Invalid username or password. Must match username: "testUsername" password: "testPassword".',
             },
           },
           previousAction: {

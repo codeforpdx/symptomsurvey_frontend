@@ -1,4 +1,5 @@
 import pick from 'lodash/pick';
+import omit from 'lodash/omit';
 
 import actions from './actions';
 
@@ -11,9 +12,11 @@ export default (state = initialState, action) => {
     case `${LOGIN}_SUCCESS`:
       return pick(action.payload.data, ['token', 'user']);
     case `${LOGIN}_FAILURE`:
-      return {};
+      return { ...state, error: action.payload.data.error };
+    case `${LOGIN}_REQUEST`:
+      return omit(state, 'error');
     case LOGOUT:
-      return { ...state };
+      return {};
     default:
       return { ...state };
   }

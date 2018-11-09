@@ -7,6 +7,13 @@ import glamorous from 'glamorous';
 import { login } from '../redux/reducers/session/actionCrators';
 
 const LOGINdiv = glamorous.div({
+  '& .has-error input': {
+    boxShadow: '0px 0px 2px 1px rgba(255, 0, 0, 0.7)',
+    border: 'none',
+  },
+  '& .error': {
+    color: '#f00',
+  },
   '& > .login-field': {
     margin: 10,
   },
@@ -31,7 +38,6 @@ class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
-      submitted: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,11 +50,12 @@ class LoginPage extends Component {
   }
 
   render() {
-    const { username, password, submitted } = this.state;
+    const { error } = this.props;
+    const { username, password } = this.state;
     return (
       <LOGINdiv>
         <div className={`login-field${
-          submitted && !username ? 'has-error' : ''}`}
+          error ? ' has-error' : ''}`}
         >
           <label htmlFor="username">
             Username:
@@ -61,7 +68,7 @@ class LoginPage extends Component {
           </label>
         </div>
         <div className={`login-field${
-          submitted && !password ? 'has-error' : ''}`}
+          error ? ' has-error' : ''}`}
         >
           <label htmlFor="password">
             Password:
@@ -72,6 +79,7 @@ class LoginPage extends Component {
               onInput={e => this.setState({ password: e.target.value })}
             />
           </label>
+          {!!error && <p className="error">{error}</p>}
         </div>
         <button
           className={`submit-button${!(password && username) ? ' disabled' : ''}`}
@@ -87,11 +95,16 @@ class LoginPage extends Component {
 }
 
 LoginPage.propTypes = {
+  error: PropTypes.string,
   submit: PropTypes.func.isRequired,
 };
 
+LoginPage.defaultProps = {
+  error: '',
+};
+
 export default connect(
-  () => ({}),
+  ({ session: { error } }) => ({ error }),
   dispatch => ({
     submit: bindActionCreators(login, dispatch),
   }),
