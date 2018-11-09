@@ -9,9 +9,11 @@ const initialState = {};
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
-      return pick(action.payload, ['token', 'user']);
-    case LOGOUT:
+      return pick(action.payload.data, ['token', 'user']);
+    case `${LOGIN}_FAILURE`:
       return {};
+    case LOGOUT:
+      return { ...state };
     default:
       return { ...state };
   }

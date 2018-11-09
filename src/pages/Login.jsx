@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import glamorous from 'glamorous';
 
-import { loginSuccessFake, logout } from '../redux/reducers/session/actionCrators';
+import { login } from '../redux/reducers/session/actionCrators';
 
 const LOGINdiv = glamorous.div({
   '& > .login-field': {
@@ -92,13 +92,7 @@ LoginPage.propTypes = {
 
 export default connect(
   () => ({}),
-  dispatch => bindActionCreators(({
-    submit: ({ username, password }) => {
-      if (username !== 'testUsername' || password !== 'testPassword') {
-        alert(`invalid username password pair: ${username}, ${password}`);
-        return logout();
-      }
-      return loginSuccessFake();
-    },
-  }), dispatch),
+  dispatch => ({
+    submit: bindActionCreators(login, dispatch),
+  }),
 )(LoginPage);
