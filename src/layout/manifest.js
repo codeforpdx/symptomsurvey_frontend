@@ -12,7 +12,6 @@ export default {
     {
       component: Login,
       path: 'login',
-      displayName: 'Login',
     },
     {
       component: TODOS,

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import glamorous from 'glamorous';
+
+import { logout } from '../redux/reducers/session/actionCrators';
 
 const HeaderWrapper = glamorous.div(
   {
@@ -26,13 +29,14 @@ const HeaderWrapper = glamorous.div(
   },
 );
 
-const Header = ({ manifest, pathName }) => (
+const Header = ({ manifest, pathName, doLogout }) => (
   <HeaderWrapper className="header">
     <Link className={pathName === '' ? 'active' : ''} to="/">{manifest.indexRoute.displayName}</Link>
     {manifest.childRoutes
       .filter(config => config.displayName)
       .map(config => <Link className={pathName === config.path ? 'active' : ''} key={config.path} to={config.path}>{config.displayName}</Link>)
         }
+    <button type="button" onClick={doLogout}>Logout</button>
   </HeaderWrapper>
 );
 
@@ -55,6 +59,7 @@ Header.propTypes = {
       displayName: PropTypes.string,
     })),
   }).isRequired,
+  doLogout: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -62,4 +67,5 @@ export default connect(
     const { pathname = '/' } = locationBeforeTransitions;
     return { pathName: pathname.replace(/^\//, ''), ...ownProps };
   },
+  dispatch => ({ doLogout: bindActionCreators(logout, dispatch) }),
 )(Header);
