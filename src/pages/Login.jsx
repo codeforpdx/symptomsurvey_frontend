@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import glamorous from 'glamorous';
 
-import { login } from '../redux/reducers/session/actionCrators';
+import { login } from '../redux/reducers/session/actionCreators';
 
 const LOGINdiv = glamorous.div({
   '& .has-error input': {
