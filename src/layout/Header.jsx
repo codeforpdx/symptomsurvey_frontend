@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import glamorous from 'glamorous';
 
-import { logout } from '../redux/reducers/session/actionCrators';
+import { logout } from '../redux/reducers/session/actionCreators';
 
 const HeaderWrapper = glamorous.div(
   {
