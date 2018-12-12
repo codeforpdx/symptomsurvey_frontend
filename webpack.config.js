@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { readFileSync } = require('fs');
+
+const publicKey = readFileSync('./keys/token.pub', 'utf-8');
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const url = ENVIRONMENT === 'production' ? 'mycoolurl' : 'localhost';
@@ -22,6 +25,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: './index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.PUBLIC_KEY': JSON.stringify(process.env.PUBLIC_KEY),
     }),
   ],
   output: {

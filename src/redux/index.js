@@ -1,6 +1,8 @@
 import {
   applyMiddleware, createStore, combineReducers, compose,
 } from 'redux';
+import axios from 'axios';
+import axiosMiddleware from 'redux-axios-middleware';
 import { routerMiddleware, routerReducer as routing } from 'react-router-redux';
 import _ from 'lodash';
 import persistState from 'redux-localstorage';
@@ -12,57 +14,64 @@ export const rootReducer = combineReducers({ routing, todo, session });
 
 // The slicer returns a function that specifies which parts of the redux state will be persisted.
 const slicer = paths => state => _.pick(state, paths);
+// http://localhost:5000/
+const client = axios.create({
+  baseURL: 'http://127.0.0.1:5000/',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  responseType: 'json',
+});
+// const mockAxiosMiddleware = ({ dispatch }) => next => (action) => {
+//   if (_.has(action, 'payload.request')) {
+//     const { payload: { request: { data: { username, password } } }, type } = action;
+//     setTimeout(() => {
+//       if (username !== 'testUsername' || password !== 'testPassword') {
+//         dispatch({
+//           type: `${type}_FAILURE`,
+//           payload: {
+//             status: 400,
+//             statusText: 'Bad Request',
+//             data: {
+//               error: 'Invalid username or password. Must match username: "testUsername" password: "testPassword".',
+//             },
+//           },
+//           previousAction: {
+//             request: action,
+//           },
+//         });
+//         return;
+//       }
+//       dispatch({
+//         type: `${type}_SUCCESS`,
+//         payload: {
+//           data: {
+//             user: {
+//               firstName: 'Jane',
+//               lastName: 'Doe',
+//             },
+//             token: 'alkjsdhf',
+//           },
+//           status: 200,
+//           statusText: 'OK',
+//         },
+//         previousAction: {
+//           request: action,
+//         },
+//       });
+//     }, 1000);
+//     return next({
+//       type: `${action.type}_REQUEST`,
+//       payload: action.payload.request,
+//     });
+//   }
 
-const mockAxiosMiddleware = ({ dispatch }) => next => (action) => {
-  if (_.has(action, 'payload.request')) {
-    const { payload: { request: { data: { username, password } } }, type } = action;
-    setTimeout(() => {
-      if (username !== 'testUsername' || password !== 'testPassword') {
-        dispatch({
-          type: `${type}_FAILURE`,
-          payload: {
-            status: 400,
-            statusText: 'Bad Request',
-            data: {
-              error: 'Invalid username or password. Must match username: "testUsername" password: "testPassword".',
-            },
-          },
-          previousAction: {
-            request: action,
-          },
-        });
-        return;
-      }
-      dispatch({
-        type: `${type}_SUCCESS`,
-        payload: {
-          data: {
-            user: {
-              firstName: 'Jane',
-              lastName: 'Doe',
-            },
-            token: 'alkjsdhf',
-          },
-          status: 200,
-          statusText: 'OK',
-        },
-        previousAction: {
-          request: action,
-        },
-      });
-    }, 1000);
-    return next({
-      type: `${action.type}_REQUEST`,
-      payload: action.payload.request,
-    });
-  }
-
-  return next(action);
-};
+//   return next(action);
+// };
 
 const middlewares = history => [
   routerMiddleware(history),
-  mockAxiosMiddleware,
+  axiosMiddleware(client),
 ];
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line

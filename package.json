@@ -18,6 +18,7 @@
     "axios": "^0.18.0",
     "glamor": "^2.20.40",
     "glamorous": "^4.13.1",
+    "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "prop-types": "15.6.2",
     "react": "16.4.1",
