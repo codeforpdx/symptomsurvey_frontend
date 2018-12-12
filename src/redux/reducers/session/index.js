@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
       if (!validationResult.valid) {
         return { error: validationResult.error };
       }
-      return { token: validationResult.decodedToken };
+      return { token: { ...validationResult.decodedToken, rawJWT } };
     case `${LOGIN}_FAILURE`:
       return { ...state, error: action.payload.data.error };
     case `${LOGIN}_REQUEST`:

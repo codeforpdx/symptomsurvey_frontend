@@ -55,11 +55,12 @@ Container.propTypes = {
   redirect: PropTypes.func.isRequired,
   token: PropTypes.shape({
     profile: PropTypes.shape({
-      username: PropTypes.string.isRequired,
+      username: PropTypes.string,
       firstName: PropTypes.string,
       lastName: PropTypes.string,
     }),
-    role: PropTypes.string.isRequired,
+    role: PropTypes.string,
+    rawJWT: PropTypes.string,
   }),
   query: PropTypes.shape({
     redirect: PropTypes.string,
