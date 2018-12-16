@@ -27,12 +27,12 @@ class Container extends Component {
     const {
       pathname, redirect, token, query,
     } = this.props;
-    if (!pathname.match(/^\/?login/) && !token) {
+    if (!pathname.match(/^\/?login/) && !token.role) {
       redirect(`/login?redirect=${encodeURIComponent(pathname)}`);
       return;
     }
 
-    if (pathname.match(/^\/?login/) && token) {
+    if (pathname.match(/^\/?login/) && token.role) {
       redirect(decodeURIComponent(query.redirect || '/'));
     }
   }
@@ -53,14 +53,22 @@ Container.propTypes = {
   children: PropTypes.node.isRequired,
   pathname: PropTypes.string.isRequired,
   redirect: PropTypes.func.isRequired,
-  token: PropTypes.string,
+  token: PropTypes.shape({
+    profile: PropTypes.shape({
+      username: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+    }),
+    role: PropTypes.string,
+    rawJWT: PropTypes.string,
+  }),
   query: PropTypes.shape({
     redirect: PropTypes.string,
   }).isRequired,
 };
 
 Container.defaultProps = {
-  token: '',
+  token: {},
 };
 
 const mapStateToProps = ({

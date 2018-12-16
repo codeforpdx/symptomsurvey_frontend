@@ -6,6 +6,8 @@ export const login = ({ username, password }) => ({
   type: LOGIN,
   payload: {
     request: {
+      url: '/login',
+      method: 'post',
       data: { username, password },
     },
   },
