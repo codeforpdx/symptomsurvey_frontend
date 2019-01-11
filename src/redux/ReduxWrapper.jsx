@@ -38,7 +38,6 @@ class Container extends Component {
   }
 
   render() {
-    console.log(this.props)
     const {
       children,
     } = this.props;
