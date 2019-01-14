@@ -96,8 +96,8 @@ export const FormikSearch = withFormik({
     }
   },
   validationSchema: Yup.object().shape({
-    searchTerms: Yup.string().required(),
-    location: Yup.string().min(5).max(5),
+    searchTerms: Yup.string().required('must include at least one search term'),
+    location: Yup.string().min(5, 'location must be a valid 5 digit zipcode').max(5, 'location must be a valid 5 digit zipcode'),
     radius: Yup.string(),
     timeFrame: Yup.string(),
   }),
