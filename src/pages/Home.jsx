@@ -57,47 +57,7 @@ export default class HomeLayout extends React.Component {
     return (
       <div>
         <h3>Hello world</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>Include these words or phrases</label>
-          <input
-            type="text"
-            value={this.state.searchTerms}
-            onChange={this.handleSearchTerms}
-          />
-          <br/>
-          <label>location (optional, zipcode)</label>
-          <input
-            type="text"
-            value={this.state.location}
-            onChange={this.handleLocation}
-          />
-          <br/>
-          <label>radius (in miles)</label>
-          <input
-            type="text"
-            value={this.state.radius}
-            onChange={this.handleRadius}
-          ></input>
-          <br/>
-          <label>Timeframe (optional)</label>
-          <input
-            type="text"
-            value={this.state.timeframe}
-            onChange={this.handleTimeframe}
-          />
-          <br/>
-          <button type="button">Clear</button>
-          <br/>
-          <button
-            type="button"
-            disabled={!searchEnabled}
-            onClick={() => this.handleSubmit()}>Search</button>
-          <br/>
-          <button type="button">Save Search</button>
-          <br/>
-        </form>
-
-      <FormikSearch />
+        <FormikSearch />
       </div>
       )
   }
