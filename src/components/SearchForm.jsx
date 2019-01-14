@@ -9,6 +9,7 @@ const SearchForm = ({
   <form
     onSubmit={handleSubmit}
   >
+    <label>Include these words or phrases</label>
     <input
       type="text"
       name="searchTerms"
@@ -16,6 +17,8 @@ const SearchForm = ({
       value={values.searchTerms}
       onChange={handleChange}
     />
+    <br/>
+    <label>Location (optional, zipcode)</label>
     <input
       type="text"
       name="location"
@@ -23,6 +26,8 @@ const SearchForm = ({
       value={values.location}
       onChange={handleChange}
     />
+    <br/>
+    <label>radius (in miles)</label>
     <input
       type="text"
       name="radius"
@@ -30,6 +35,8 @@ const SearchForm = ({
       value={values.radius}
       onChange={handleChange}
     />
+    <br/>
+    <label>Timeframe (optional)</label>
     <input
       type="text"
       name="timeFrame"
@@ -37,7 +44,16 @@ const SearchForm = ({
       value={values.timeFrame}
       onChange={handleChange}
     />
-    <button>Submit</button>
+    <br/>
+    <button type="submit">Submit</button>
+    <button
+      type="button"
+      onClick={() => console.log('clicked clear')}
+    >Clear</button>
+    <button
+      type="button"
+      onClick={() => console.log('clicked "Save Search"')}
+    >Save Search</button>
   </form>
 )
 
@@ -51,7 +67,10 @@ export const FormikSearch = withFormik({
   }) {
     {/* return an object which sets initial values of the form */}
     return {
-      searchTerms: ''
+      searchTerms: '',
+      location: '97015',
+      radius: '',
+      timeFrame: ''
     }
   },
   handleSubmit(values) {
