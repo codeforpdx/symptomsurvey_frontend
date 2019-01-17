@@ -24,7 +24,6 @@ const SearchForm = ({
         <Field
           type="text"
           name="location"
-          placeholder="97015"
         />
       </label>
       {touched.location && errors.location &&
@@ -43,11 +42,17 @@ const SearchForm = ({
     </div>
     <div className="form-field">
       <label>Timeframe (optional)
-        <Field
-          type="text"
-          name="timeFrame"
-          placeholder="1 month"
-        />
+        <Field component="select" name="timeFrame">
+          <option value=""></option>
+          <option value="">1 week</option>
+          <option value="">2 weeks</option>
+          <option value="">1 month</option>
+          <option value="">2 months</option>
+          <option value="">3 months</option>
+          <option value="">6 months</option>
+          <option value="">9 months</option>
+          <option value="">1 year</option>
+        </Field>
       </label>
       {touched.timeFrame && errors.timeFrame &&
       <p className="form-error">{errors.timeFrame}</p>}
@@ -57,11 +62,6 @@ const SearchForm = ({
         type="checkbox" name="savedSearch" checked={values.savedSearch} />
       Save this search?
     </label>
-    <br/>
-    <Field component="select" name="plan">
-      <option value="free">Free</option>
-      <option value="premium">Premium</option>
-    </Field>
     <br/>
     <button type="submit">Submit</button>
     <button
@@ -77,14 +77,14 @@ const SearchForm = ({
 
 
 export const FormikSearch = withFormik({
-  mapPropsToValues({
+  mapPropsToValues: ({
     searchTerms,
     location,
     radius,
     timeFrame,
     savedSearch,
     plan,
-  }) {
+  }) => {
     {/* return an object which sets initial values of the form */}
     return {
       searchTerms: searchTerms || '',
@@ -97,7 +97,7 @@ export const FormikSearch = withFormik({
   },
   validationSchema: Yup.object().shape({
     searchTerms: Yup.string().required('must include at least one search term'),
-    location: Yup.string().min(5, 'location must be a valid 5 digit zipcode').max(5, 'location must be a valid 5 digit zipcode'),
+    location: Yup.string().matches(/^[0-9]{5}$/, 'Location must be a valid 5 digit zipcode'),
     radius: Yup.string(),
     timeFrame: Yup.string(),
   }),
