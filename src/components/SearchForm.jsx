@@ -32,7 +32,7 @@ const SearchForm = ({
     <div className="form-field">
       <label>radius (in miles)
         <Field
-          type="text"
+          type="number"
           name="radius"
           placeholder="25"
         />
@@ -98,7 +98,7 @@ export const FormikSearch = withFormik({
   validationSchema: Yup.object().shape({
     searchTerms: Yup.string().required('must include at least one search term'),
     location: Yup.string().matches(/^[0-9]{5}$/, 'Location must be a valid 5 digit zipcode'),
-    radius: Yup.string(),
+    radius: Yup.number().positive('Radius must be a number'),
     timeFrame: Yup.string(),
   }),
   handleSubmit(values) {
