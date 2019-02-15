@@ -1,12 +1,11 @@
 import React from 'react';
-import { Field, Form, withFormik } from 'formik';
+import { Field, Form, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { searchTweets } from '../redux/reducers/search/actionCreators';
 
-const SearchForm = ({
-  values,
-  errors,
-  touched,
-}) => (
+const SearchForm = ({ values }) => (
   <Form>
     <div className="form-field">
       <label>Include these words or phrases
@@ -16,8 +15,7 @@ const SearchForm = ({
           placeholder="seperate search terms with a comma (,)"
         />
       </label>
-      {touched.searchTerms && errors.searchTerms &&
-      <p className="form-error">{errors.searchTerms}</p>}
+      <ErrorMessage name="searchTerms" />
     </div>
     <div className="form-field">
       <label>Location (optional, zipcode)
@@ -26,8 +24,7 @@ const SearchForm = ({
           name="location"
         />
       </label>
-      {touched.location && errors.location &&
-      <p className="form-error">{errors.location}</p>}
+      <ErrorMessage name="location" />
     </div>
     <div className="form-field">
       <label>radius (in miles)
@@ -37,8 +34,7 @@ const SearchForm = ({
           placeholder="25"
         />
       </label>
-      {touched.location && errors.radius &&
-      <p className="form-error">{errors.radius}</p>}
+      <ErrorMessage name="radius" />
     </div>
     <div className="form-field">
       <label>Timeframe (optional)
@@ -54,8 +50,7 @@ const SearchForm = ({
           <option value="">1 year</option>
         </Field>
       </label>
-      {touched.timeFrame && errors.timeFrame &&
-      <p className="form-error">{errors.timeFrame}</p>}
+      <ErrorMessage name="timeFrame" />
     </div>
     <label>
       <Field
@@ -68,13 +63,8 @@ const SearchForm = ({
       type="button"
       onClick={() => console.log('clicked clear')}
     >Clear</button>
-  <button
-    type="button"
-    onClick={() => console.log('clicked "Save Search"')}
-  >Save Search</button>
   </Form>
 )
-
 
 export const FormikSearch = withFormik({
   mapPropsToValues: ({
@@ -83,7 +73,6 @@ export const FormikSearch = withFormik({
     radius,
     timeFrame,
     savedSearch,
-    plan,
   }) => {
     {/* return an object which sets initial values of the form */}
     return {
@@ -91,8 +80,7 @@ export const FormikSearch = withFormik({
       location: location || '97015',
       radius: radius || '',
       timeFrame: timeFrame || '',
-      savedSearch: savedSearch || true,
-      plan: plan || 'free',
+      savedSearch: savedSearch || false,
     }
   },
   validationSchema: Yup.object().shape({
@@ -101,9 +89,13 @@ export const FormikSearch = withFormik({
     radius: Yup.number().positive('Radius must be a number'),
     timeFrame: Yup.string(),
   }),
-  handleSubmit(values) {
-    {/* this is where we would run dispatch or make an AJAX call */}
-    console.log(values)
+  handleSubmit(values, props) {
+    props.dispatch(submit(values))
   }
 })(SearchForm)
 
+export default connect(
+  dispatch => ({ 
+    submit: bindActionCreators(searchTweets, dispatch),
+  }),
+)(FormikSearch)

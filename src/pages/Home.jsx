@@ -5,8 +5,7 @@ export default function HomeLayout() {
 
     return (
       <div>
-        <h3>Hello world</h3>
-        <FormikSearch />
+        <FormikSearch/>
       </div>
       )
   }
