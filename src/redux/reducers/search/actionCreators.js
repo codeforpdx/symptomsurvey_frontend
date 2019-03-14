@@ -1,14 +1,14 @@
 import actions from './actions.js';
 
-const { SEARCH_TWEETS } = actions;
+const { TWEETS } = actions;
 
-export const searchTweets = (formValues) => ({
-  type: SEARCH_TWEETS,
+export const searchTweets = (data) => ({
+  type: TWEETS,
   payload: {
     request: {
       url: '/search',
       method: 'post',
-      data: {formValues},
+      data,
     }
   },
 })

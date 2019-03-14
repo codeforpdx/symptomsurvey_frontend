@@ -66,7 +66,7 @@ const SearchForm = ({ values }) => (
   </Form>
 )
 
-export const FormikSearch = withFormik({
+const FormikSearch = withFormik({
   mapPropsToValues: ({
     searchTerms,
     location,
@@ -89,13 +89,14 @@ export const FormikSearch = withFormik({
     radius: Yup.number().positive('Radius must be a number'),
     timeFrame: Yup.string(),
   }),
-  handleSubmit(values, props) {
-    props.dispatch(submit(values))
+  handleSubmit(values, FormikBag) {
+    FormikBag.props.submit(values)
   }
 })(SearchForm)
 
 export default connect(
+  () => ({}),
   dispatch => ({ 
     submit: bindActionCreators(searchTweets, dispatch),
-  }),
+  })
 )(FormikSearch)

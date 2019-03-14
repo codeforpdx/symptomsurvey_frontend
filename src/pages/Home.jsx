@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormikSearch } from '../components/SearchForm.jsx';
+import FormikSearch from '../components/SearchForm.jsx';
 
 export default function HomeLayout() {
 
