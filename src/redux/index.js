@@ -7,10 +7,11 @@ import { routerMiddleware, routerReducer as routing } from 'react-router-redux';
 import _ from 'lodash';
 import persistState from 'redux-localstorage';
 
+import search from './reducers/search';
 import todo from './reducers/todo';
 import session from './reducers/session';
 
-export const rootReducer = combineReducers({ routing, todo, session });
+export const rootReducer = combineReducers({ routing, todo, session, search });
 
 // The slicer returns a function that specifies which parts of the redux state will be persisted.
 const slicer = paths => state => _.pick(state, paths);
