@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import glamorous from 'glamorous';
 import data from '../fakeData.json';
+import DataRows from './DataRows';
 
 const TableDiv = glamorous.div({
   '& .tweets-table': {
@@ -8,6 +9,10 @@ const TableDiv = glamorous.div({
     '& > tbody > tr > th, td': {
       padding: '5px',
       border: '1px solid black',
+      maxWidth: '300px',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     }
   },
 });
@@ -30,12 +35,7 @@ class TweetsTable extends Component {
               <th scope="col">Date</th>
               <th scope="col">Popularity</th>
             </tr>
-            <tr>
-              <td scope="row">{data[1].text}</td>
-              <td>{data[1].user.location}</td> 
-              <td>{data[1].created_at}</td>
-              <td>{data[1].favorite_count}</td>
-            </tr>
+              <DataRows data={data}/>
           </tbody>
         </table>
       </TableDiv>
