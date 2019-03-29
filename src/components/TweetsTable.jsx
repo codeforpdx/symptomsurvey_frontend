@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import glamorous from 'glamorous';
+import data from '../fakeData.json';
 
 const TableDiv = glamorous.div({
   '& .tweets-table': {
@@ -30,10 +31,10 @@ class TweetsTable extends Component {
               <th scope="col">Popularity</th>
             </tr>
             <tr>
-              <td scope="row">First tweet</td>
-              <td>Tweet Location</td> 
-              <td>Tweet Date</td>
-              <td>Tweet Popularity</td>
+              <td scope="row">{data[1].text}</td>
+              <td>{data[1].user.location}</td> 
+              <td>{data[1].created_at}</td>
+              <td>{data[1].favorite_count}</td>
             </tr>
           </tbody>
         </table>
