@@ -27,12 +27,6 @@ class SampleChart extends Component {
   }
 
   componentDidMount() {
-    let geo = 0
-    let noGeo = 0
-    data.forEach((tweet) => {
-      tweet.geo ? geo++ : noGeo++
-    })
-
     let minutes = this.organizeByMinute()
 
     var ctx = 'sampleChart'
