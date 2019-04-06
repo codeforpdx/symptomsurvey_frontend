@@ -15,7 +15,6 @@ const DataRows = (props) => {
           <td>{tweet.text}</td>
           <td>{location}</td>
           <td>{timestamp}</td>
-          <td>{tweet.favorite_count}</td>
           <td style={{whiteSpace: 'pre-line'}}>{hashtagArray.join('\n')}</td>
         </tr>
       )

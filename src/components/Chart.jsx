@@ -6,8 +6,8 @@ import moment from 'moment';
 
 const ChartDiv = glamorous.div({
   position: 'relative',
-  height: '20vh',
-  width: '40vw',
+  height: '15vh',
+  width: '30vw',
 });
 
 class SampleChart extends Component {

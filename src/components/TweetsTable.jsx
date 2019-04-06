@@ -24,7 +24,6 @@ const TweetsTable = () => {
             <th scope="col">Tweet</th>
             <th scope="col">Location</th>
             <th scope="col">Date</th>
-            <th scope="col">Times Favorited</th>
             <th scope="col">Hashtags</th>
           </tr>
             <DataRows data={data}/>
