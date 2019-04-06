@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const DataRows = (props) => {
   const rows = []
@@ -8,11 +9,12 @@ const DataRows = (props) => {
       tweet.entities.hashtags.length && tweet.entities.hashtags.forEach((hashtag) => {
         hashtagArray.push(hashtag.text)
       })
+      let timestamp = moment(tweet.created_at).format('MMMM Do YYYY, h:mm:ss a')
       rows.push(
         <tr>
           <td>{tweet.text}</td>
           <td>{location}</td>
-          <td>{tweet.created_at}</td>
+          <td>{timestamp}</td>
           <td>{tweet.favorite_count}</td>
           <td style={{whiteSpace: 'pre-line'}}>{hashtagArray.join('\n')}</td>
         </tr>
