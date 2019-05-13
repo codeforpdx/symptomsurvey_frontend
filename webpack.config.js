@@ -29,6 +29,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.PUBLIC_KEY': JSON.stringify(publicKey),
+      'process.env.G_MAPS_KEY': JSON.stringify(process.env.G_MAPS_KEY)
     }),
   ],
   output: {

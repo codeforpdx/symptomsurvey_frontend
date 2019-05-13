@@ -1,5 +1,4 @@
-// AIzaSyAWRJnX0ewu1gSCusxK18jbVSmw8xBQGtI
-// lat: 45.516, lng: -122.679
+// portland lat: 45.516, lng: -122.679
 
 import React from "react";
 import fetch from "isomorphic-fetch";
@@ -9,9 +8,11 @@ import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerC
 
 import fakeData from "../fakeData.json";
 
+const gKey = process.env.G_MAPS_KEY;
+
 const MapWithAMarkerClusterer = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAWRJnX0ewu1gSCusxK18jbVSmw8xBQGtI&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${gKey}&v=3.exp&libraries=geometry,drawing,places`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
