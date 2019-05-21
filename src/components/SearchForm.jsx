@@ -1,73 +1,69 @@
 import React from 'react';
-import { Formik, Field, Form, withFormik, ErrorMessage } from 'formik';
+import { Field, Form, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { searchTweets } from '../redux/reducers/search/actionCreators';
 
 const SearchForm = ({ values }) => (
-  <Formik
-    // initialValues={}
-    onSubmit={(values, actions) => {alert('Submitted! However, nothing is currently sent via submission. See Formik\'s documention to handle submission: jaredpalmer.com/formik/docs/tutorial')}}>
-    <Form>
-      <div className="form-field">
-        <label>Include these words or phrases
-          <Field
-            type="text"
-            name="searchTerms"
-            placeholder="seperate search terms with a comma (,)"
-          />
-        </label>
-        <ErrorMessage name="searchTerms" />
-      </div>
-      <div className="form-field">
-        <label>Location (optional, zipcode)
-          <Field
-            type="text"
-            name="location"
-          />
-        </label>
-        <ErrorMessage name="location" />
-      </div>
-      <div className="form-field">
-        <label>radius (in miles)
-          <Field
-            type="number"
-            name="radius"
-            placeholder="25"
-          />
-        </label>
-        <ErrorMessage name="radius" />
-      </div>
-      <div className="form-field">
-        <label>Timeframe (optional)
-          <Field component="select" name="timeFrame">
-            <option value=""></option>
-            <option value="">1 week</option>
-            <option value="">2 weeks</option>
-            <option value="">1 month</option>
-            <option value="">2 months</option>
-            <option value="">3 months</option>
-            <option value="">6 months</option>
-            <option value="">9 months</option>
-            <option value="">1 year</option>
-          </Field>
-        </label>
-        <ErrorMessage name="timeFrame" />
-      </div>
-      <label>
+  <Form onSubmit={(values, actions) => {alert('Submitted! However, nothing is currently sent via submission. See Formik\'s documention to handle submission: jaredpalmer.com/formik/docs/tutorial')}}>
+    <div className="form-field">
+      <label>Include these words or phrases
         <Field
-          type="checkbox" name="savedSearch" checked={values.savedSearch} />
-        Save this search?
+          type="text"
+          name="searchTerms"
+          placeholder="seperate search terms with a comma (,)"
+        />
       </label>
-      <br/>
-      <button type="submit">Submit</button>
-      <button
-        type="button"
-        onClick={() => console.log('clicked clear')}
-      >Clear</button>
-    </Form>
-  </Formik>
+      <ErrorMessage name="searchTerms" />
+    </div>
+    <div className="form-field">
+      <label>Location (optional, zipcode)
+        <Field
+          type="text"
+          name="location"
+        />
+      </label>
+      <ErrorMessage name="location" />
+    </div>
+    <div className="form-field">
+      <label>radius (in miles)
+        <Field
+          type="number"
+          name="radius"
+          placeholder="25"
+        />
+      </label>
+      <ErrorMessage name="radius" />
+    </div>
+    <div className="form-field">
+      <label>Timeframe (optional)
+        <Field component="select" name="timeFrame">
+          <option value=""></option>
+          <option value="">1 week</option>
+          <option value="">2 weeks</option>
+          <option value="">1 month</option>
+          <option value="">2 months</option>
+          <option value="">3 months</option>
+          <option value="">6 months</option>
+          <option value="">9 months</option>
+          <option value="">1 year</option>
+        </Field>
+      </label>
+      <ErrorMessage name="timeFrame" />
+    </div>
+    <label>
+      <Field
+        type="checkbox" name="savedSearch" checked={values.savedSearch} />
+      Save this search?
+    </label>
+    <br/>
+    <button type="submit">Submit</button>
+    <button
+      type="button"
+      onClick={() => console.log('clicked clear')}
+    >Clear</button>
+  </Form>
 )
 
 const FormikSearch = withFormik({
