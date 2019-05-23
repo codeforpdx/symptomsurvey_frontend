@@ -48,3 +48,13 @@ code symptomsurvey_frontend
 ## Running the site locally
 
 If you have the repository open in VS Code, you can open a terminal ``control + ` `` and run `npm install`.  This will install all of the project dependencies.  To then run the project run `npm start` and navigate to `localhost:8080` in your browser.
+
+*End of set up instructions*
+
+---
+
+## Google Maps API
+
+*This is information about how Google Maps is used in the frontend of the project.*
+
+[react-google-maps](https://tomchentw.github.io/react-google-maps) is used simplify Google Maps API as a component to display a cluster map of search results.
