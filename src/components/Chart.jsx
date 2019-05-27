@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
+
 import data from '../fakeData.json';
 import Chart from 'chart.js';
 import moment from 'moment';
 
-const ChartDiv = glamorous.div({
+const ChartDiv = styled.div({
   position: 'relative',
   height: '15vh',
   width: '30vw',

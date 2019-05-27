@@ -1,11 +1,11 @@
 import React from 'react';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 
 import Header from './Header';
 
 import manifest from './manifest';
 
-const ContainerLayout = glamorous.div({
+const ContainerLayout = styled.div({
   display: 'flex',
   flexDirection: 'column',
   padding: 20,

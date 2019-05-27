@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
+
 import data from '../fakeData.json';
 import DataRows from './DataRows';
 
-const TableDiv = glamorous.div({
+const TableDiv = styled.div({
   '& .tweets-table': {
     borderCollapse: 'collapse',
     '& > tbody > tr > th, td': {

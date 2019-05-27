@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 
 import { logout } from '../redux/reducers/session/actionCreators';
 
-const HeaderWrapper = glamorous.div(
+const HeaderWrapper = styled.div(
   {
     display: 'flex',
     flexDirection: 'row',
