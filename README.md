@@ -44,6 +44,13 @@ Navigate to a repository where you would like to store the source code.  Then ru
 git clone https://github.com/codeforportland/symptomsurvey_frontend.git
 code symptomsurvey_frontend
 ```
+## Installing the Google Maps API secret key
+
+In order for the app to make API calls to Google Maps, which places the Twitter markers, you will need a secret key installed on your machine. This is done in the terminal, it's not kept in any files so there's no risk of uploading it accidentally. **You will need to talk to someone on the frontend team to get the key directly from them.** Follow these steps (for Mac OS):
+
+1. Obtain key from frontend team
+1. $`echo "export G_MAPS_KEY=<your gmaps key>;" >> ~/.bash_profile`
+1. $`. ~/.bash_profile` or restart the project
 
 ## Running the site locally
 
@@ -57,4 +64,4 @@ If you have the repository open in VS Code, you can open a terminal ``control + 
 
 *This is information about how Google Maps is used in the frontend of the project.*
 
-[react-google-maps](https://tomchentw.github.io/react-google-maps) is used simplify Google Maps API as a component to display a cluster map of search results.
+[react-google-maps](https://tomchentw.github.io/react-google-maps) is used to simplify Google Maps API as a component to display a cluster map of search results.
