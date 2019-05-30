@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { searchTweets } from '../redux/reducers/search/actionCreators';
 
 const SearchForm = ({ values }) => (
-  <Form>
+  <Form onSubmit={(values, actions) => {alert('Submitted! However, nothing is currently sent via submission. See Formik\'s documention to handle submission: jaredpalmer.com/formik/docs/tutorial')}}>
     <div className="form-field">
       <label>Include these words or phrases
         <Field
@@ -96,7 +96,7 @@ const FormikSearch = withFormik({
 
 export default connect(
   () => ({}),
-  dispatch => ({ 
+  dispatch => ({
     submit: bindActionCreators(searchTweets, dispatch),
   })
 )(FormikSearch)
