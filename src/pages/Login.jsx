@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 
 import { login } from '../redux/reducers/session/actionCreators';
 
-const LOGINdiv = glamorous.div({
+const LOGINdiv = styled.div({
+  background: 'papayawhip',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+
   '& .has-error input': {
     boxShadow: '0px 0px 2px 1px rgba(255, 0, 0, 0.7)',
     border: 'none',
@@ -20,7 +26,9 @@ const LOGINdiv = glamorous.div({
   '& > .submit-button': {
     background: '#337ab7',
     color: '#fff',
-    padding: '5px 15px',
+    padding: '5px 10px',
+    textDecoration: 'none',
+    borderRadius: 5,
     fontSize: 16,
     '.disabled': {
       background: '#888',
@@ -29,7 +37,14 @@ const LOGINdiv = glamorous.div({
       },
     },
   },
+  '> div': {
+    background: 'papayawhip',
+  },
+  '& label': {
+    fontSize: 16,
+  },
 });
+
 
 class LoginPage extends Component {
   constructor(props) {
@@ -87,7 +102,7 @@ class LoginPage extends Component {
           disabled={!password || !username}
           onClick={this.handleSubmit}
         >
-                    submit
+          Submit
         </button>
       </LOGINdiv>
     );

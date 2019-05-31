@@ -19,7 +19,6 @@
     "chart.js": "^2.8.0",
     "formik": "^1.4.2",
     "glamor": "^2.20.40",
-    "glamorous": "^4.13.1",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "prop-types": "15.6.2",
@@ -32,6 +31,7 @@
     "redux": "3.7.2",
     "redux-axios-middleware": "^4.0.0",
     "redux-localstorage": "^0.4.1",
+    "styled-components": "^4.2.0",
     "yup": "^0.26.7"
   },
   "devDependencies": {

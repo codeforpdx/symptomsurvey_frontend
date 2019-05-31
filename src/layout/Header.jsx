@@ -3,31 +3,32 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
 
 import { logout } from '../redux/reducers/session/actionCreators';
 
-const HeaderWrapper = glamorous.div(
-  {
-    display: 'flex',
-    flexDirection: 'row',
-    '& a': {
-      padding: '5px 10px',
-      textDecoration: 'none',
-      marginRight: 10,
-      color: '#000',
-      background: '#eee',
-      borderRadius: 5,
-      '.active': {
-        background: '#ddd',
-      },
-      ':hover': {
-        color: '#fff',
-        background: '#888',
-      },
+const HeaderWrapper = styled.div({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  backgroundImage: 'linear-gradient(white, papayawhip)',
+  '& *': {
+    padding: '5px 10px',
+    textDecoration: 'none',
+    borderRadius: 5,
+    fontSize: 16,
+    color: '#000',
+    background: '#ccc',
+    '.active': {
+      background: '#ddd',
+    },
+    ':hover': {
+      color: '#fff',
+      background: '#888',
     },
   },
-);
+});
 
 const Header = ({ manifest, pathName, doLogout }) => (
   <HeaderWrapper className="header">
@@ -36,7 +37,7 @@ const Header = ({ manifest, pathName, doLogout }) => (
       .filter(config => config.displayName)
       .map(config => <Link className={pathName === config.path ? 'active' : ''} key={config.path} to={config.path}>{config.displayName}</Link>)
         }
-    <button type="button" onClick={doLogout}>Logout</button>
+    <Link type="button" onClick={doLogout}>Logout</Link>
   </HeaderWrapper>
 );
 

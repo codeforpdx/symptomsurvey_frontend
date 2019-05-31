@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
+import styled from 'styled-components';
+
 import { connect } from 'react-redux';
 
 import { addTodo, completeTodo, removeTodo } from '../redux/reducers/todo/actionCreators';
 
-const TODO = glamorous.div({
+const TODO = styled.div({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-start',
@@ -35,7 +36,7 @@ const TODO = glamorous.div({
   },
 });
 
-const TODOSDiv = glamorous.div({
+const TODOSDiv = styled.div({
   padding: 15,
   '& button:hover': {
     cursor: 'pointer',
