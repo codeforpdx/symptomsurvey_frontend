@@ -7,8 +7,9 @@ import styled from 'styled-components';
 import { login } from '../redux/reducers/session/actionCreators';
 
 const LOGINdiv = styled.div({
-  background: 'papayawhip',
+  background: '#377A6A',
   display: 'flex',
+  minHeight: '70vh',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'space-around',
@@ -38,10 +39,14 @@ const LOGINdiv = styled.div({
     },
   },
   '> div': {
-    background: 'papayawhip',
+    background: '#D8D8D8',
   },
   '& label': {
-    fontSize: 16,
+    fontSize: 20,
+  },
+'& button': {
+    fontSize: 20,
+    padding: 4,
   },
 });
 
