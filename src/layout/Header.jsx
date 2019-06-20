@@ -5,14 +5,31 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import styled from 'styled-components';
 
+import county_logo from '../images/county_logo_small.png';
 import { logout } from '../redux/reducers/session/actionCreators';
 
 const HeaderWrapper = styled.div({
   display: 'flex',
+  height: '63px',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-around',
-  backgroundImage: 'linear-gradient(white, papayawhip)',
+  backgroundImage: 'linear-gradient(#377A6A, #D8D8D8)',  
+  '& Link' : {
+    background: '#61ABD8',
+    width: '16vw',
+    height: '55px',
+  },
+  '& .logo' : {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: '53px',
+  },
+  '& img' : {
+    width: '66px',
+    height: '50px',
+  },
   '& *': {
     padding: '5px 10px',
     textDecoration: 'none',
@@ -28,11 +45,19 @@ const HeaderWrapper = styled.div({
       background: '#888',
     },
   },
+
 });
 
 const Header = ({ manifest, pathName, doLogout }) => (
   <HeaderWrapper className="header">
-    <Link className={pathName === '' ? 'active' : ''} to="/">{manifest.indexRoute.displayName}</Link>
+
+    <div className="logo">
+      <img src={county_logo} />
+      <h6>
+        Clackamas Symptom Survey
+      </h6>
+    </div>
+    <Link type="button" className={pathName === '' ? 'active' : ''} to="/">{manifest.indexRoute.displayName}</Link>
     {manifest.childRoutes
       .filter(config => config.displayName)
       .map(config => <Link className={pathName === config.path ? 'active' : ''} key={config.path} to={config.path}>{config.displayName}</Link>)
