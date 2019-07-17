@@ -7,22 +7,28 @@ import { searchTweets } from '../redux/reducers/search/actionCreators';
 import styled from 'styled-components';
 
 const StylishForm = styled.div({
-  background: '#cccccc',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  alignContent: 'stretch',
-  justifyContent: 'space-around',
-  margin: '1rem',
-  border: '2px #337ab7 solid',
-  borderRadius: '1.5rem',
+  '& Form': {
+    backgroundImage: 'radial-gradient(#D8D8D8, #cccccc, #377a6a)',  
+    display: 'flex',
+    flexFlow: 'row wrap',
+    alignItems: 'start',
+    alignContent: 'stretch',
+    justifyItems: 'center',
+    justifyContent: 'center',
+    padding: '1rem 1rem 0rem 1rem',
+    border: '2px #377a6a solid',
+    borderRadius: '1rem',
+    margin: '1rem',
+  },
 
   '& .form-subsection': {
     padding: '1.5rem',
-    background: '#eeeeee',
+    backgroundImage: 'radial-gradient(snow, #D8D8D8)',  
     margin: '1rem',
     border: '2px #337ab7 solid',
-    borderRadius: '1.5rem',
+    borderRadius: '1rem',
+    maxWidth: '90vw',
+    minWidth: '40vw',
   },
 
   '& button': {
@@ -31,17 +37,16 @@ const StylishForm = styled.div({
     margin: '1.2rem',
     padding: '5px 10px',
     borderRadius: 5,
-    fontSize: 16,
-
   },
-  '& .submitbtn': {background: '#337ab7',},
+  '& .submit-button': {background: '#377a6a', color: 'white'},
 
-  '& label': {
+
+  '& .form-field': {
     fontSize: 20,
   },
 
-  '& Field': {
-    fontSize: 30,
+  '& .form-label': {
+    fontSize: 20,
   },
 
 });
@@ -51,21 +56,26 @@ const SearchForm = ({ values }) => (
     <Form onSubmit={(values, actions) => {alert('Submitted! However, nothing is currently sent via submission. See Formik\'s documention to handle submission: jaredpalmer.com/formik/docs/tutorial')}}>
       
       <div className="form-subsection">
-
-        <div className="form-field">
-          <label>Include these words or phrases
+        <div>
+          <label className="form-label">
+          Include these words or phrases
             <Field
               type="text"
               name="searchTerms"
               placeholder="seperate search terms with a comma (,)"
+              className="form-field"
             />
           </label>
           <ErrorMessage name="searchTerms" />
         </div>
-        
-        <div className="form-field">
-          <label>Timeframe (optional)
-            <Field component="select" name="timeFrame">
+        <div>
+          <label className="form-label">
+          Timeframe (optional)
+            <Field
+              component="select"
+              name="timeFrame"
+               className="form-field"
+            >
               <option value=""></option>
               <option value="">1 week</option>
               <option value="">2 weeks</option>
@@ -79,50 +89,58 @@ const SearchForm = ({ values }) => (
           </label>
           <ErrorMessage name="timeFrame" />
         </div>
-      
       </div>
-      <div className="form-subsection">
 
-        <div className="form-field">
-          <label>Location (optional, zipcode)
+      <div className="form-subsection">
+        <div>
+          <label className="form-label">
+          Zipcode
             <Field
               type="text"
               name="location"
+              placeholder="97015"
+              className="form-field"
             />
           </label>
           <ErrorMessage name="location" />
         </div>
-
-        <div className="form-field">
-          <label>radius (in miles)
+        <div>
+          <label className="form-label">
+          Radius (miles)
             <Field
               type="number"
               name="radius"
               placeholder="25"
+              className="form-field"
             />
           </label>
           <ErrorMessage name="radius" />
         </div>
-        
-        
-
       </div>
-      <div className="form-subsection">
 
-        <label>
+      <div className="form-subsection">
+        <label className="form-label">
           <Field
-            type="checkbox" name="savedSearch" checked={values.savedSearch} />
+            type="checkbox"
+            name="savedSearch"
+            checked={values.savedSearch}
+            className="form-field"
+            />
           Save this search?
         </label>
         <br/>
-        <button className="submitbtn" type="submit">Submit</button>
+        <button
+          className="submit-button"
+          type="submit"
+        >
+          Submit
+        </button>
         <button
           type="button"
           onClick={() => console.log('clicked clear')}
         >
           Clear
         </button>
-    
       </div>
 
     </Form>
