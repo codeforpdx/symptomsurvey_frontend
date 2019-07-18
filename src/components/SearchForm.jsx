@@ -15,20 +15,22 @@ const StylishForm = styled.div({
     alignContent: 'stretch',
     justifyItems: 'center',
     justifyContent: 'center',
-    padding: '1rem 1rem 0rem 1rem',
     border: '2px #377a6a solid',
     borderRadius: '1rem',
     margin: '1rem',
   },
 
   '& .form-subsection': {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '1rem 1rem 0rem 1rem',
+    flexFlow: 'row wrap',
     padding: '1.5rem',
     backgroundImage: 'radial-gradient(snow, #D8D8D8)',  
     margin: '1rem',
     border: '2px #337ab7 solid',
     borderRadius: '1rem',
-    maxWidth: '90vw',
-    minWidth: '40vw',
+    width: '40vw',
   },
 
   '& button': {
@@ -42,11 +44,20 @@ const StylishForm = styled.div({
 
 
   '& .form-field': {
+    border: '2px #337ab7 solid',
+    borderRadius: '0.2rem',
     fontSize: 20,
   },
 
   '& .form-label': {
     fontSize: 20,
+  },
+
+  '& .form-field-spacing': {
+    display: 'flex',
+    justifyContent: 'space-between',
+    minWidth: '100%',
+    paddingBottom: 6, 
   },
 
 });
@@ -56,21 +67,22 @@ const SearchForm = ({ values }) => (
     <Form onSubmit={(values, actions) => {alert('Submitted! However, nothing is currently sent via submission. See Formik\'s documention to handle submission: jaredpalmer.com/formik/docs/tutorial')}}>
       
       <div className="form-subsection">
-        <div>
+        <div className="form-field-spacing">
           <label className="form-label">
           Include these words or phrases
+          </label>
             <Field
               type="text"
               name="searchTerms"
-              placeholder="seperate search terms with a comma (,)"
+              placeholder="separate search terms with a comma (,)"
               className="form-field"
             />
-          </label>
           <ErrorMessage name="searchTerms" />
         </div>
-        <div>
+        <div className="form-field-spacing">
           <label className="form-label">
           Timeframe (optional)
+          </label>
             <Field
               component="select"
               name="timeFrame"
@@ -86,34 +98,33 @@ const SearchForm = ({ values }) => (
               <option value="">9 months</option>
               <option value="">1 year</option>
             </Field>
-          </label>
           <ErrorMessage name="timeFrame" />
         </div>
       </div>
 
       <div className="form-subsection">
-        <div>
+        <div className="form-field-spacing">
           <label className="form-label">
           Zipcode
+          </label>
             <Field
               type="text"
               name="location"
               placeholder="97015"
               className="form-field"
             />
-          </label>
           <ErrorMessage name="location" />
         </div>
-        <div>
+        <div className="form-field-spacing">
           <label className="form-label">
           Radius (miles)
+          </label>
             <Field
               type="number"
               name="radius"
               placeholder="25"
               className="form-field"
             />
-          </label>
           <ErrorMessage name="radius" />
         </div>
       </div>

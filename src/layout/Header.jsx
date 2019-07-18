@@ -50,7 +50,6 @@ const HeaderWrapper = styled.div({
 
 const Header = ({ manifest, pathName, doLogout }) => (
   <HeaderWrapper className="header">
-
     <div className="logo">
       <img src={county_logo} />
       <h6>
