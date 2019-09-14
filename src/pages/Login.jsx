@@ -27,10 +27,11 @@ const LOGINdiv = styled.div({
   '& > .submit-button': {
     background: '#337ab7',
     color: '#fff',
-    padding: '5px 10px',
+    margin: '1.2rem',
+    padding: '1.2rem',
     textDecoration: 'none',
-    borderRadius: 5,
-    fontSize: 16,
+    borderRadius: '1rem',
+    fontSize: 24,
     '.disabled': {
       background: '#888',
       ':hover': {
@@ -41,7 +42,7 @@ const LOGINdiv = styled.div({
   '> div': {
     background: '#D8D8D8',
   },
-  '& label': {
+  '& .form-label': {
     fontSize: 20,
   },
 '& button': {

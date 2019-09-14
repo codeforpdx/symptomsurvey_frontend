@@ -31,8 +31,8 @@ const HeaderWrapper = styled.div({
     height: '50px',
   },
   '& *': {
-    padding: '5px 10px',
     textDecoration: 'none',
+    padding: '5px 10px',
     borderRadius: 5,
     fontSize: 16,
     color: '#000',
@@ -50,7 +50,6 @@ const HeaderWrapper = styled.div({
 
 const Header = ({ manifest, pathName, doLogout }) => (
   <HeaderWrapper className="header">
-
     <div className="logo">
       <img src={county_logo} />
       <h6>
