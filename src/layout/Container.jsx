@@ -8,7 +8,9 @@ import manifest from './manifest';
 const ContainerLayout = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  padding: 20,
+  height: '100%',
+  minHeight: '100%',
+
 });
 
 export default ({ children }) => (
