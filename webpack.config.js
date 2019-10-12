@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const { readFileSync } = require('fs');
 
 const publicKey = readFileSync('./keys/token.pub', 'utf-8');
@@ -26,6 +27,10 @@ module.exports = {
       inject: true,
       template: './index.html',
     }),
+
+    //For the favicon
+    new FaviconsWebpackPlugin('./images/county_logo_small.png'),
+
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.PUBLIC_KEY': JSON.stringify(publicKey),
