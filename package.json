@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chart.js": "^2.8.0",
+    "dotenv-webpack": "^1.7.0",
     "formik": "^1.4.2",
     "glamor": "^2.20.40",
     "jsonwebtoken": "^8.4.0",

@@ -1,9 +1,9 @@
 # Symptom Survey Front End
 
 This repository is a website for use by Clackamas County.  These are developer notes.
-I have included notes that assume the reader is using a Mac OSX or Linux command line.
+Most of the notes are for Mac OSX or Linux command line, unless otherwise noted.
 
-## setting up your development environment
+## Setting up your development environment
 
 ### Installing node
 
@@ -36,7 +36,7 @@ You will want to set up an IDE before you begin making contributions to this cod
 
 A download of VS Code is available [here](https://code.visualstudio.com/download). Once you have installed the editor and you have the program open you can open the command pallet (shift + command + P) and search for `install 'code' command in PATH`.  Once you run that command from the command pallet, you can type `code <directory name>` to open any directory in VS Code from the command line.
 
-## Cloning the repository
+### Cloning the repository
 
 Navigate to a repository where you would like to store the source code.  Then run
 
@@ -44,15 +44,24 @@ Navigate to a repository where you would like to store the source code.  Then ru
 git clone https://github.com/codeforportland/symptomsurvey_frontend.git
 code symptomsurvey_frontend
 ```
-## Installing the Google Maps API secret key
 
-In order for the app to make API calls to Google Maps, which places the Twitter markers, you will need a secret key installed on your machine. This is done in the terminal, it's not kept in any files so there's no risk of uploading it accidentally. **You will need to talk to someone on the frontend team to get the key directly from them.** Follow these steps (for Mac OS):
+### Environment Variables
 
+There is one environment variable that is required for access to Google Maps, G_MAPS_KEY, which places the Twitter markers. An easy platform-agnostic way to ensure the variables are set appropriately is to add a .env file at the project root with the variables defined on separate lines like so: G_MAPS_KEY=value. The actual value can be provided by the frontend team.
+
+### Installing the Google Maps API secret key
+
+Follow these steps for Mac OS:
 1. Obtain key from frontend team
-1. $`echo "export G_MAPS_KEY=<your gmaps key>;" >> ~/.bash_profile`
-1. $`. ~/.bash_profile` or restart the project
+2. $`echo "export G_MAPS_KEY=<gmaps key>;" >> ~/.bash_profile`
+3. $`. ~/.bash_profile` or restart the project
 
-## Running the site locally
+Follow these steps for Windows OS:
+1. Obtain key from frontend team
+2. In the terminal $`echo G_MAPS_KEY=<gmaps key> >> .env`
+3. Restart the project
+
+### Running the site locally
 
 If you have the repository open in VS Code, you can open a terminal ``control + ` `` and run `npm install`.  This will install all of the project dependencies.  To then run the project run `npm start` and navigate to `localhost:8080` in your browser.
 
@@ -60,7 +69,7 @@ If you have the repository open in VS Code, you can open a terminal ``control + 
 
 ---
 
-## Google Maps API
+### Google Maps API
 
 *This is information about how Google Maps is used in the frontend of the project.*
 
