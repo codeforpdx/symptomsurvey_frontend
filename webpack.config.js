@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { readFileSync } = require('fs');
+const Dotenv = require('dotenv-webpack');
 
 const publicKey = readFileSync('./keys/token.pub', 'utf-8');
 
@@ -19,6 +20,12 @@ module.exports = {
     './index.jsx',
   ],
   plugins: [
+    // Dotenv for GitBash users
+    new Dotenv({
+      path: "./.env", // Path to .env file (this is the default)
+      safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
+    }),
+
     new webpack.HotModuleReplacementPlugin(),
     // activates HMR
 

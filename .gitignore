@@ -1,3 +1,6 @@
 node_modules
 dist
 token
+
+# dotenv environment variables file
+.env

@@ -46,11 +46,17 @@ code symptomsurvey_frontend
 ```
 ## Installing the Google Maps API secret key
 
-In order for the app to make API calls to Google Maps, which places the Twitter markers, you will need a secret key installed on your machine. This is done in the terminal, it's not kept in any files so there's no risk of uploading it accidentally. **You will need to talk to someone on the frontend team to get the key directly from them.** Follow these steps (for Mac OS):
+In order for the app to make API calls to Google Maps, which places the Twitter markers, you will need a secret key installed on your machine. This is done in the terminal, it's not kept in any files so there's no risk of uploading it accidentally. **You will need to talk to someone on the frontend team to get the key directly from them.** 
 
+Follow these steps for Mac OS:
 1. Obtain key from frontend team
-1. $`echo "export G_MAPS_KEY=<your gmaps key>;" >> ~/.bash_profile`
-1. $`. ~/.bash_profile` or restart the project
+2. $`echo "export G_MAPS_KEY=<your gmaps key>;" >> ~/.bash_profile`
+3. $`. ~/.bash_profile` or restart the project
+
+Follow these steps for Windows OS:
+1. Obtain key from frontend team
+2. In the terminal $`echo G_MAPS_KEY=<your gmaps key> >> .env`
+3. Restart the project
 
 ## Running the site locally
 
